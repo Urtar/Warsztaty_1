@@ -17,33 +17,28 @@ public class Main1 {
     }
 
     static void guessNumber(int rand) {
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Podaj liczbe w zakresie 1 - 100:");
-        while (!scan.hasNextInt()) {
-            scan.next();
-            System.out.println("To nie jest liczba, spróbuj jeszcze raz");
-        }
-        int number = scan.nextInt();
+        int number = givenNumber();
         int counter = 0;
         while (number != rand) {
             if (number > rand) {
                 System.out.println("Za dużo!");
-                while (!scan.hasNextInt()) {
-                    scan.next();
-                    System.out.println("To nie jest liczba, spróbuj jeszcze raz");
-                }
-                number = scan.nextInt();
+                number = givenNumber();
                 counter++;
             } else if (number < rand) {
                 System.out.println("Za mało!");
-                while (!scan.hasNextInt()) {
-                    scan.next();
-                    System.out.println("To nie jest liczba, spróbuj jeszcze raz");
-                }
-                number = scan.nextInt();
+                number = givenNumber();
                 counter++;
             }
         }
         System.out.println("Zgadłeś! w " + counter + " próbach!!!:)");
+    }
+    public static int givenNumber () {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Podaj liczbe w zakresie 1 - 100:");
+        while (!scan.hasNextInt()) {
+            scan.next();
+            System.out.println("To nie jest liczba, spróbuj jeszcze raz");
+        }
+        return scan.nextInt();
     }
 }
