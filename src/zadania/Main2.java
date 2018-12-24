@@ -19,10 +19,11 @@ public class Main2 {
         int[] tableOf6Numbers = new int[6];
         for (int i = 0; i < tableOf6Numbers.length; i++) {
             int number = randomNumber();
+
             if (checkRepeat(tableOf6Numbers, number)) {
                 i--;
-            }
-            tableOf6Numbers[i] = number;
+            } else
+                tableOf6Numbers[i] = number;
         }
         Arrays.sort(tableOf6Numbers);
         return tableOf6Numbers;
@@ -51,11 +52,11 @@ public class Main2 {
     }
 
     private static boolean checkRepeat(int[] givenNumbers, int number) {
-        for (int givenNumber : givenNumbers)
+        for (int givenNumber : givenNumbers) {
             if (givenNumber == number) {
-                boolean b = true;
-                if (b) return true;
+                return true;
             }
+        }
         return false;
     }
 

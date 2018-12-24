@@ -13,16 +13,25 @@ public class Main4 {
     public static int cubeData() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Podaj dane w formacie xDy+z, gdzie x ilosc rzutow, y rodzaj kostki (3, 4, 6, 8, 10, 12, 20 lub 100), z to liczba modyfikator: ");
-
         String str = scan.nextLine();
         StringTokenizer strToken = new StringTokenizer(str, "D" + "+" + " ");
         int number = strToken.countTokens();
         //System.out.println("Ilosc tokenow: " + number);
         int x, y, z;
-        if (number == 2) {
+        if (number == 1) {
             x = 1;
             y = Integer.parseInt(strToken.nextToken());
-            z = Integer.parseInt(strToken.nextToken());
+            z = 0;
+        } else if (number == 2) {
+            if (Character.isDigit(str.charAt(0))) {
+                x = Integer.parseInt(strToken.nextToken());
+                y = Integer.parseInt(strToken.nextToken());
+                z = 0;
+            } else {
+                x = 1;
+                y = Integer.parseInt(strToken.nextToken());
+                z = Integer.parseInt(strToken.nextToken());
+            }
         } else if (number == 3) {
             x = Integer.parseInt(strToken.nextToken());
             y = Integer.parseInt(strToken.nextToken());
@@ -47,7 +56,7 @@ public class Main4 {
         //System.out.println(x + " " + y + " " + z);
         int score = 0;
         for (int i = 0; i < x; i++) {
-            score = score + x * randomNumber(y);
+            score = score + randomNumber(y);
         }
         return score + z;
     }

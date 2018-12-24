@@ -42,7 +42,7 @@ public class Main5 {
     public static boolean skippedElements(String text) {
         String[] skippedElements = {"oraz", "poniewaz", "alebowiem", "gdyż", "jest", "Onet24:", "które", "których", "będzie"};
         for (int i = 0; i < skippedElements.length; i++) {
-            if (text == skippedElements[i]) {
+            if (text.equals(skippedElements[i])) {
                 return true;
             }
         }
@@ -64,9 +64,11 @@ public class Main5 {
         try {
             Scanner scan = new Scanner(file);
             while (scan.hasNextLine()) {
-                String text = scan.next();
-                if (text.length() > 3 && !skippedElements(text)) {
-                    writeToFile(text, path2, add);
+                String text1 = scan.nextLine();
+                for (String text : text1.split(" ")) {
+                    if (text.length() > 3 && !skippedElements(text)) {
+                        writeToFile(text, path2, add);
+                    }
                 }
             }
         } catch (FileNotFoundException e) {
